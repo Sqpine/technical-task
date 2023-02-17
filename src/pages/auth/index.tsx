@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import { Auth } from "features/auth";
 
-const AuthPage = () => {
+const AuthPage: React.FC = () => {
   return (
     <Box
       minHeight="100vh"

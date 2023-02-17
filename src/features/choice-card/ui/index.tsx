@@ -2,13 +2,10 @@ import React from "react";
 import { Button } from "@mui/material";
 import { useEvent, useStore } from "effector-react";
 
-import { CardType } from "shared/lib";
-import { $selectedCard, updateSelectedCard } from "../model";
+import { $selectedCard, onGameFinished, updateSelectedCard } from "../model";
+import { ChoiceCardProps } from "./types";
+import { gameFinished } from "shared/api";
 
-type ChoiceCardProps = {
-  cardType: CardType;
-  disabled?: boolean;
-};
 export const ChoiceCard: React.FC<ChoiceCardProps> = ({
   cardType,
   disabled = false,
@@ -17,6 +14,13 @@ export const ChoiceCard: React.FC<ChoiceCardProps> = ({
   const selectCard = useEvent(updateSelectedCard);
 
   const isActiveButton = chosenCard === cardType || disabled;
+
+  React.useEffect(() => {
+    const subscribers = [gameFinished(onGameFinished)];
+    return () => {
+      subscribers.forEach((subscriber) => subscriber?.close());
+    };
+  }, []);
 
   return (
     <>

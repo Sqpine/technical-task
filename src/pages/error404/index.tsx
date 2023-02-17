@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 
-const Error404Page = () => {
+const Error404Page: React.FC = () => {
   return (
     <Box
       height="100%"

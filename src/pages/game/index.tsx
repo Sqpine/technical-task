@@ -1,33 +1,38 @@
-import React, { useEffect, useLayoutEffect } from "react";
+import React from "react";
 import { useStore } from "effector-react";
 import { Box } from "@mui/material";
 
-import { playerDisconnected, playersReceived, SocketAPI } from "shared/api";
-import { CardType } from "shared/lib";
+import {
+  CardType,
+  playerDisconnected,
+  playersReceived,
+  SocketAPI,
+} from "shared/api";
 import { GameCard } from "entities/game-card";
 import { ChoiceCard } from "features/choice-card";
 import { StatusInfo } from "entities/opponent-status";
 import { Score } from "entities/score";
-import { userModel } from "entities/user";
+import { User, userModel } from "entities/user";
 import { getAllPlayers } from "./api";
 import { $players, onPlayerDisconnected, onPlayersUpdated } from "./model";
 
-const GamePage = () => {
+const GamePage: React.FC = () => {
   const players = useStore($players);
   const username = useStore(userModel.$username);
 
-  useLayoutEffect(() => {
+  React.useLayoutEffect(() => {
     if (username) {
       SocketAPI.start(username);
     }
     return () => SocketAPI.stop();
   }, [username]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const subscribers = [
       playersReceived(onPlayersUpdated),
       playerDisconnected(onPlayerDisconnected),
     ];
+
     getAllPlayers();
 
     return () => {
@@ -40,6 +45,7 @@ const GamePage = () => {
   return (
     <>
       <Box display="flex" alignItems="center" flexDirection="column">
+        <User />
         <Score />
         <Box display="flex" gap={10}>
           <GameCard

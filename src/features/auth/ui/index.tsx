@@ -1,9 +1,10 @@
+import React from "react";
 import { Button, Input } from "@mui/material";
 import { useStore } from "effector-react";
 
 import { $username, handleChange, submitted } from "../model";
 
-export const Auth = () => {
+export const Auth: React.FC = () => {
   const username = useStore($username);
 
   return (

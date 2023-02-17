@@ -7,3 +7,9 @@ export enum EventsNameType {
   getPlayers = "get_players",
   choose = "choose",
 }
+
+export enum CardType {
+  Paper = "paper",
+  Rock = "rock",
+  Scissors = "scissors",
+}

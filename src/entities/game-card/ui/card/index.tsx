@@ -1,5 +1,6 @@
+import React from "react";
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
-import { CardType } from "shared/lib";
+import { CardType } from "shared/api";
 
 import scissors from "./assets/scissors.jpg";
 import paper from "./assets/paper.jpg";

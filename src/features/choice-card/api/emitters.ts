@@ -1,5 +1,4 @@
-import { EventsNameType, context } from "shared/api";
-import { CardType } from "shared/lib";
+import { CardType, context, EventsNameType } from "shared/api";
 
 export const selectCard = (cardType: CardType) => {
   context.socket?.emit(EventsNameType.choose, cardType);

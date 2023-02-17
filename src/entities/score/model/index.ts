@@ -1,8 +1,8 @@
 import { createApi, createEvent, createStore } from "effector";
 
 import { Score, ScoreApi } from "./types";
-import { GameFinished } from "shared/api";
-import { CardType, getSavedUser } from "shared/lib";
+import { CardType, GameFinished } from "shared/api";
+import { getSavedUser } from "shared/lib";
 
 const playerLeft = createEvent();
 

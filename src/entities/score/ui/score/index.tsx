@@ -1,15 +1,14 @@
-import { useEffect } from "react";
+import React from "react";
 import { useStore } from "effector-react";
 import { Box, Typography } from "@mui/material";
 
-import { gameFinished } from "../../api";
 import { $score, onGameFinished, onPlayerLeft } from "../../model";
-import { playerDisconnected } from "shared/api";
+import { gameFinished, playerDisconnected } from "shared/api";
 
-export const Score = () => {
+export const Score: React.FC = () => {
   const { win, lose, tie } = useStore($score);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const subscribers = [
       playerDisconnected(onPlayerLeft),
       gameFinished(onGameFinished),

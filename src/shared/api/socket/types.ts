@@ -1,4 +1,4 @@
-import { CardType } from "../../lib";
+import { CardType } from "./consts";
 import { Socket } from "socket.io-client";
 
 export type Username = { username: string };
@@ -12,16 +12,12 @@ export type GameFinished = {
   results: GameResult[];
 };
 
-export type SocketType = Socket<
-  ServerToClientEvents,
-  ClientToServerEvents
-> | null;
-
-export type Context = { socket: SocketType };
+export type Context = {
+  socket: Socket<ServerToClientEvents, ClientToServerEvents> | null;
+};
 
 export type ServerToClientEvents = {
   connected: (user: Username) => void;
-  // disconnected: (user: Username) => void;
   disconnected: (user: Username) => void;
   players_received: (players: string[]) => void;
   opponent_made_choice: (user: Username) => void;
