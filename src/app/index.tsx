@@ -1,10 +1,13 @@
+import { Box } from "@mui/material";
+
 import { withProviders } from "./providers";
 import "./index.css";
-import { Box } from "@mui/material";
+import { Routing } from "pages";
 
 const App = () => {
   return (
-    <Box height="100vh">
+    <Box minHeight="100vh">
+      <Routing />
     </Box>
   );
 };
