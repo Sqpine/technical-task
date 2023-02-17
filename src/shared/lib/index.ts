@@ -1,1 +1,1 @@
-export * from "./constants";
+export const getSavedUser = () => localStorage.getItem("username");
